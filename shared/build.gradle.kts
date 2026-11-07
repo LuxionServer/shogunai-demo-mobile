@@ -63,6 +63,3 @@ kotlin {
 dependencies {
     androidRuntimeClasspath(libs.compose.uiTooling)
 }
-tasks.withType<org.jetbrains.kotlin.gradle.targets.native.tasks.KotlinNativeSimulatorTest>().configureEach {
-    providers.environmentVariable("IOS_SIMULATOR_UDID").orNull?.let { device.set(it) }
-}

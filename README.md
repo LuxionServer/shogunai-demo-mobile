@@ -49,10 +49,6 @@ Each session starts its own emulator and simulator with `shogun emulator start` 
 
 Without Claude Code, create the worktrees with `shogun new <task>`, start the devices with `shogun emulator start` and `shogun simulator start`, and load the variables with `eval "$(shogun env)"` before following the steps in [AGENTS.md](./AGENTS.md).
 
-## Without ShogunAi
-
-The `without-shogunai` branch has no `.shogunai.json` and no hooks, and its `AGENTS.md` uses whichever device is running. Start one emulator and one simulator and run the same three sessions from it to see the agents step on each other.
-
 ## The app
 
 A list of 20 books, in memory, shared between Android and iOS with Compose Multiplatform:
