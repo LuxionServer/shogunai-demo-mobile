@@ -1,0 +1,9 @@
+{
+  "link": ["/local.properties"],
+  "providers": {
+    "gradle": { "daemonMaxHeap": "3g", "kotlinDaemonMaxHeap": "2g", "idleTimeoutMinutes": 30 },
+    "emulator": { "avd": "Medium_Phone_API_35" },
+    "ios-simulator": { "device": "iPhone 17", "runtime": "iOS 26.5" },
+    "xcode": { "compilationCache": true }
+  }
+}
