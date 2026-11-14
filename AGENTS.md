@@ -32,9 +32,18 @@ xcrun simctl io "$IOS_SIMULATOR_UDID" screenshot screenshots/<task>-ios.png
 
 The Xcode build compiles the shared code through Gradle, so the first one takes a while.
 
+`xcrun simctl` can't tap or type. Send taps and text to the simulator with [AXe](https://github.com/cameroncooke/AXe), always to `$IOS_SIMULATOR_UDID`. Coordinates are in points; `axe describe-ui` prints the accessibility tree with each element's frame.
+
+```bash
+axe describe-ui --udid "$IOS_SIMULATOR_UDID"
+axe tap -x 200 -y 400 --udid "$IOS_SIMULATOR_UDID"
+axe type 'Tolkien' --udid "$IOS_SIMULATOR_UDID"
+```
+
 ## Rules
 
 - No comments in code.
 - Code, commits and docs in English.
 - This repository is **public**: never commit `local.properties`, signing files, credentials, machine-specific paths or local tool settings.
 - `develop` is the default branch; changes go through pull requests against it.
+- When doing a task from `tasks/`, don't commit, push or open a pull request unless explicitly asked to; leave the change in the working tree for review.
