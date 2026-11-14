@@ -26,6 +26,7 @@ Every worktree then links the main checkout's `local.properties`, gets its own e
 
 - macOS with Xcode and an iOS simulator runtime, and the Android SDK with an emulator image, as Android Studio installs them. The AVD, device and runtime above are preferences: ShogunAi uses them when the machine has them.
 - [ShogunAi](https://github.com/LuxionServer/ShogunAi#installation) with the `shogun` command.
+- [AXe](https://github.com/cameroncooke/AXe), which agents use to tap and type on the iOS simulator: `brew install cameroncooke/axe/axe`.
 - A JDK to start Gradle, such as the one bundled with Android Studio; Gradle downloads the JDK 21 it builds with.
 - An agent such as [Claude Code](https://claude.com/claude-code).
 
