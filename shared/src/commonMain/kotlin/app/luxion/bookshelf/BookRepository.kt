@@ -5,6 +5,13 @@ class BookRepository(private val books: List<Book> = seedBooks) {
     fun all(): List<Book> = books.sortedBy { it.title }
 
     fun find(id: Int): Book? = books.find { it.id == id }
+
+    fun search(query: String): List<Book> {
+        val text = query.trim()
+        return all().filter {
+            it.title.contains(text, ignoreCase = true) || it.author.contains(text, ignoreCase = true)
+        }
+    }
 }
 
 val seedBooks = listOf(

@@ -3,6 +3,7 @@ package app.luxion.bookshelf
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
+import kotlin.test.assertTrue
 
 class BookRepositoryTest {
 
@@ -29,5 +30,36 @@ class BookRepositoryTest {
     @Test
     fun findsNothingForAnUnknownId() {
         assertNull(repository.find(99))
+    }
+
+    @Test
+    fun searchesByTitle() {
+        assertEquals(listOf("Refactoring"), repository.search("Refactor").map { it.title })
+    }
+
+    @Test
+    fun searchesByAuthor() {
+        assertEquals(
+            listOf("Patterns of Enterprise Application Architecture", "Refactoring"),
+            repository.search("Martin Fowler").map { it.title },
+        )
+    }
+
+    @Test
+    fun searchesIgnoringCase() {
+        assertEquals(
+            listOf("Patterns of Enterprise Application Architecture", "Refactoring"),
+            repository.search("fOWLER").map { it.title },
+        )
+    }
+
+    @Test
+    fun findsNothingWhenNoBookMatches() {
+        assertTrue(repository.search("Tolkien").isEmpty())
+    }
+
+    @Test
+    fun listsEveryBookForAnEmptyQuery() {
+        assertEquals(repository.all(), repository.search(""))
     }
 }
