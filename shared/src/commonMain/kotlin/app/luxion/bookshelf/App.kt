@@ -9,7 +9,11 @@ import androidx.compose.ui.tooling.preview.Preview
 @Preview
 fun App() {
     val repository = remember { BookRepository() }
+    val navigator = remember { BookshelfNavigator(repository) }
     MaterialTheme {
-        BookListScreen(repository.all())
+        when (val screen = navigator.screen) {
+            Screen.List -> BookListScreen(repository.all(), onBookClick = { navigator.openBook(it.id) })
+            is Screen.Detail -> BookDetailScreen(screen.book, onBack = navigator::back)
+        }
     }
 }
